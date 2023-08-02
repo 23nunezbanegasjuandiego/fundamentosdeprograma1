@@ -1,0 +1,9 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Bolivianos: el hado propicio     ";
+ return 0;
+}
