@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   float numero1,numero2,suma,resta,multiplicacion,division;
+   cout<<"ingrese el numero1; ";
+   cin>>numero1; 
+   cout<<"ingrese el numero2; ";
+   cin>>numero2;
+   cout<<"suma"<<numero1+numero2<<endl;
+  cout<<"suma"<<numero1-numero2<<endl;
+  cout<<"suma"<<numero1*numero2<<endl;
+  cout<<"suma"<<numero1/numero2<<endl;
+    return 0;
+}
