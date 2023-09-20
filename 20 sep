@@ -1,0 +1,20 @@
+//Ejercicio 3
+
+#include using namespace std;
+int main() {
+int N;
+cout << "Ingrese un numero entero N: ";
+cin >> N;
+
+// Variable para almacenar la suma de los números impares
+int suma = 0;
+
+// Utiliza un bucle para iterar sobre los números impares y sumarlos
+for (int i = 1; i <= N; i += 2) {
+suma += i;
+}
+
+// Imprime el resultado
+cout << "La suma de los numeros impares entre 1 y " << N << " es: " << suma <
+return 0;
+}
