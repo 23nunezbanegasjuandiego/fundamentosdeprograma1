@@ -1,0 +1,32 @@
+/******************************************************************************
+
+prueba
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+float nota , nota1 , nota2 , nota3 ;
+ 
+ cout<<"Ingrese la nota del primer examen: ";
+ 
+cin>> nota1;
+
+cout<<"Ingresa la nota del segundo examen: " ;
+
+cin>> nota2;
+
+cout<<"Ingrese la nota del tercer examen: " ;
+cin>> nota3;
+
+nota= (nota1 + nota2 + nota3)/3;
+
+ 
+ cout<<"El promedio de los examenes es:" << nota ;
+ 
+ return 0;
+}
+JDNB
