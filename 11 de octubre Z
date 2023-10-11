@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cmath>
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+
+
+
+    int main()
+    {
+        float a, b, c, x1, x2;
+
+        cout << "Introduce los coeficientes a, b y c de la ecuación cuadrática (ax^2 + bx + c = 0): ";
+        cin >> a >> b >> c;
+
+        int solutions = unica(a, b, c, x1, x2);
+
+        if (solutions == 2) {
+            cout << "Dos soluciones reales: x1 = " << x1 << " y x2 = " << x2 << std::endl;
+        }
+        else if (solutions == 1)
+        {
+            cout << "Una solucion real: x = " << x1 << std::endl;
+        }
+        else
+        {
+            cout << "No hay soluciones reales." << std::endl;
+        }
+
+        return 0;
+    }
+    // Funcion para resolver la ec cuadratica
+    float unica(float a, float b, float c, float& x1, float& x2)
+    {
+        float discriminante = b * b - 4 * a * c;
+
+        if (discriminante > 0)
+        {
+            x1 = (-b + sqrt(discriminante)) / (2 * a);
+            x2 = (-b - sqrt(discriminante)) / (2 * a);
+            return 2; // Dos soluciones reales
+        }
+        else if (discriminante == 0)
+        {
+            x1 = -b / (2 * a);
+            x2 = x1;
+            return 1; //  reales
+        }
+        else
+        {
+            return 0; // imaginarios
+        }
+    }
+}
