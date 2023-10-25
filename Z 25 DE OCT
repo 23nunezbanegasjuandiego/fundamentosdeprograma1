@@ -1,0 +1,110 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+struct Producto {
+    string nombre;
+    float precio;
+    int cantidad;
+};
+
+// Función para agregar un nuevo producto al inventario
+void agregarProducto(vector<Producto> &inventario) {
+    Producto producto;
+    cout << "Ingrese el nombre del producto: ";
+    cin >> producto.nombre;
+    cout << "Ingrese el precio del producto: ";
+    cin >> producto.precio;
+    cout << "Ingrese la cantidad en stock: ";
+    cin >> producto.cantidad;
+    inventario.push_back(producto);
+    cout << "Producto agregado al inventario." << endl;
+}
+
+// Función para actualizar la cantidad en stock de un producto existente
+void actualizarStock(vector<Producto> &inventario, const string &nombre, int nuevaCantidad) {
+    for (Producto &producto : inventario) {
+        if (producto.nombre == nombre) {
+            producto.cantidad = nuevaCantidad;
+            cout << "Cantidad en stock de " << nombre << " actualizada." << endl;
+            return;
+        }
+    }
+    cout << "El producto " << nombre << " no se encontró en el inventario." << endl;
+}
+
+// Función para buscar un producto por nombre y mostrar su información
+void buscarProducto(const vector<Producto> &inventario, const string &nombre) {
+    for (const Producto &producto : inventario) {
+        if (producto.nombre == nombre) {
+            cout << "Nombre: " << producto.nombre << ", Precio: $" << producto.precio << ", Cantidad en stock: " << producto.cantidad << endl;
+            return;
+        }
+    }
+    cout << "El producto " << nombre << " no se encontró en el inventario." << endl;
+}
+
+// Función para mostrar una lista de todos los productos en el inventario
+void mostrarInventario(const vector<Producto> &inventario) {
+    cout << "Inventario de la tienda:" << endl;
+    for (const Producto &producto : inventario) {
+        cout << "Nombre: " << producto.nombre << ", Precio: $" << producto.precio << ", Cantidad en stock: " << producto.cantidad << endl;
+    }
+}
+
+// Función para calcular el valor total del inventario
+double calcularValorTotal(const vector<Producto> &inventario) {
+    double valorTotal = 0;
+    for (const Producto &producto : inventario) {
+        valorTotal += producto.precio * producto.cantidad;
+    }
+    return valorTotal;
+}
+
+int main() {
+    vector<Producto> inventario;
+
+    while (true) {
+        cout << "\nMenú:" << endl;
+        cout << "1. Agregar un nuevo producto al inventario" << endl;
+        cout << "2. Actualizar la cantidad en stock de un producto existente" << endl;
+        cout << "3. Buscar un producto por nombre" << endl;
+        cout << "4. Mostrar lista de productos en el inventario" << endl;
+        cout << "5. Calcular el valor total del inventario" << endl;
+        cout << "0. Salir" << endl;
+
+        int opcion;
+        cin >> opcion;
+
+        if (opcion == 1) {
+            agregarProducto(inventario);
+        } else if (opcion == 2) {
+            string nombre;
+            int nuevaCantidad;
+            cout << "Ingrese el nombre del producto a actualizar: ";
+            cin >> nombre;
+            cout << "Ingrese la nueva cantidad en stock: ";
+            cin >> nuevaCantidad;
+            actualizarStock(inventario, nombre, nuevaCantidad);
+        } else if (opcion == 3) {
+            string nombre;
+            cout << "Ingrese el nombre del producto a buscar: ";
+            cin >> nombre;
+            buscarProducto(inventario, nombre);
+        } else if (opcion == 4) {
+            mostrarInventario(inventario);
+        } else if (opcion == 5) {
+            double valorTotal = calcularValorTotal(inventario);
+            cout << "Valor total del inventario: $" << valorTotal << endl;
+        } else if (opcion == 0) {
+            cout << "Saliendo del programa." << endl;
+            break;
+        } else {
+            cout << "Opción no válida. Intente de nuevo." << endl;
+        }
+    }
+
+    return 0;
+}
