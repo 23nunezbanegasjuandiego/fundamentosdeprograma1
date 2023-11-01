@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+vector<string> productos;
+vector<double> ventas;
+
+void agregarVenta() {
+    string producto;
+    double venta;
+
+    cout << "Ingrese el nombre del producto: ";
+    cin >> producto;
+    cout << "Ingrese la venta realizada: ";
+    cin >> venta;
+
+    productos.push_back(producto);
+    ventas.push_back(venta);
+}
+
+double calcularVentasTotales() {
+    double totalVentas = 0;
+    for (size_t i = 0; i < ventas.size(); i++) {
+        totalVentas += ventas[i];
+    }
+    return totalVentas;
+}
+
+int main() {
+    while (true) {
+        cout << "\nMenu de opciones:" << endl;
+        cout << "1. Agregar venta" << endl;
+        cout << "2. Calcular ventas totales" << endl;
+        cout << "3. Salir" << endl;
+
+        int opcion;
+        cout << "Seleccione una opción: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            agregarVenta();
+            cout << "Venta registrada con éxito." << endl;
+        } else if (opcion == 2) {
+            double totalVentas = calcularVentasTotales();
+            cout << "Las ventas totales realizadas son: " << totalVentas << endl;
+        } else if (opcion == 3) {
+            cout << "Gracias por usar el programa!" << endl;
+            break;
+        } else {
+            cout << "Opción no válida. Por favor, elija una opción válida." << endl;
+        }
+    }
+
+    return 0;
+}
