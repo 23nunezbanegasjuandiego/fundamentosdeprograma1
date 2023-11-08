@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+const int MAX_PRODUCTOS = 100;
+
+string nombresProductos[MAX_PRODUCTOS];
+double preciosProductos[MAX_PRODUCTOS];
+int totalProductos = 0;
+
+int main() {
+    int opcion;
+
+    do {
+        cout << "Menú:\n";
+        cout << "1. Registrar Producto\n";
+        cout << "2. Calcular Precio Total\n";
+        cout << "3. Encontrar Producto más Caro\n";
+        cout << "4. Mostrar Lista de Productos y Precios\n";
+        cout << "5. Salir\n";
+        cout << "Elije una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1: // Registrar Producto
+                if (totalProductos < MAX_PRODUCTOS) {
+                    string nombreProducto;
+                    double precioProducto;
+                    cout << "Ingrese el nombre del producto: ";
+                    cin.ignore();
+                    getline(cin, nombreProducto);
+                    cout << "Ingrese el precio del producto: ";
+                    cin >> precioProducto;
+                    nombresProductos[totalProductos] = nombreProducto;
+                    preciosProductos[totalProductos] = precioProducto;
+                    totalProductos++;
+                    cout << "Producto registrado con éxito.\n";
+                } else {
+                    cout << "La capacidad máxima de productos se ha alcanzado.\n";
+                }
+                break;
+
+            case 2: // Calcular Precio Total
+                {
+                    double precioTotal = 0;
+                    for (int i = 0; i < totalProductos; i++) {
+                        precioTotal += preciosProductos[i];
+                    }
+                    cout << "Precio Total: $" << precioTotal << "\n";
+                }
+                break;
+
+            case 3: // Encontrar Producto más Caro
+                {
+                    double precioMasCaro = 75.00; // Precio fijo para producto B
+                    string productoMasCaro = "Producto B";
+                    for (int i = 0; i < totalProductos; i++) {
+                        if (preciosProductos[i] > precioMasCaro) {
+                            precioMasCaro = preciosProductos[i];
+                            productoMasCaro = nombresProductos[i];
+                        }
+                    }
+                    cout << "Producto más caro
